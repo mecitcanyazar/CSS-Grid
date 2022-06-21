@@ -1,0 +1,399 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+}
+body {
+    font-family: "Fira Code", monospace;
+    color: var(--mainBlack);
+    background:var(--mainWhite);
+    line-height: 1.5;
+  }
+
+ul{
+    list-style-type: none;
+  }
+a{
+    text-decoration: none;
+  }
+ 
+img{
+    width: 100%;
+    display: block;
+  }
+h1,
+h2,
+h3 {
+    text-transform: capitalize;
+    letter-spacing: var(--mainSpacing);
+    margin-bottom: 1.25rem;
+  }
+h1{
+    font-size: 3rem;
+  }
+h2{
+    margin-bottom: 0;
+  }
+p{
+    font-weight: 300;
+    font-size: 0.7rem;
+    line-height: 2;
+  }
+.btn{
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    text-transform: capitalize;
+    border: 3px solid var(--primaryColor);
+    color: var(--primaryColor);
+    margin: 3rem;
+    transition: var(--mainTransition);
+    
+    }
+.btn:hover{
+      background-color: var(--primaryColor);
+      color: var(--mainWhite);
+    }
+:root{
+        --primaryColor:#f15025;
+        --mainBlack:#222;
+        --mainWhite:#fff;
+        --offWhite:#f7f7f7;
+        --darkGrey:#afafaf;
+        --mainTransition: all 0.3s linear;
+        --mainSpacing: 0.2rem;
+    }
+
+/* -------İndex---------- */
+
+.main-navbar{
+    background-color:var(--darkGrey) ;
+    padding: 0 20px;
+    text-align: center; 
+}
+
+.fa-solid:hover{
+    color: var(--primaryColor);
+}
+
+@media screen and (min-width:992px) { 
+    .main-navbar ul{
+        /* max-width:1170px; */
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns:repeat(4,1fr);
+        align-items: center;
+        justify-items: center;
+    }
+    .main-navbar a{
+        text-align: center;
+    }
+    .main-navbar li:last-child{
+        display:none ;
+    }   
+
+}
+
+
+.main-navbar a{
+    color: var(--primaryColor);
+    font-size: 16px;
+    padding: 16px 0;
+    letter-spacing: var(--mainSpacing);
+    text-transform: capitalize;
+    display: block;
+}
+.main-navbar a:hover{
+    color: var(--mainBlack);
+
+}
+
+/* ---------Hero-------- */
+
+.main-hero{
+    height: 100vh;
+    background-color: var(--primaryColor);
+    color: var(--mainWhite);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+   
+}
+.main-hero-info{
+    padding: 0 40px;
+}
+
+ .main-hero h1{
+    font-size:70px;
+    
+    
+}
+
+.main-hero p{
+    font-size: 16px;
+    max-width: 560px;
+     /*p'ye bir max genişlik atamadığımda justify-center dediğimde yatayda ortalayamadım.Çünkü p genişliği zaten tüm satırı kapladığı için justify-content özelliğimi ekranda görüntüleyemedim.  */
+}  
+
+
+@media screen and (min-width:768px){
+    .main-hero{
+        height: 100vh;
+        background: linear-gradient(rgb(241, 80, 37, 0.75), rgba(0, 0, 0, 0.75)) , url("./images/image-2.jpeg");
+        background-position: center;
+        background-size: cover;
+        
+    }
+}
+
+/* ---------Cards-------- */
+.card{
+    border: 1px solid rgb(18 17 17 / 22%);
+    border-bottom-width: 15px ;  
+    line-height: 2;
+    font-weight: 300;
+    margin: 20px;
+     
+}
+.column-layout{
+    text-align: center;
+}
+
+.card p,h2{
+    text-align: center;
+}
+
+
+@media screen and (min-width:768px){
+    .cards-container{
+        max-width: 1170px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        padding: 30px;
+    }
+    .card{
+        margin: 0;
+    }
+    .column-layout{
+        grid-column: 1/-1;
+    }
+
+}
+
+@media screen and (min-width:992px){
+
+    .cards-container{
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin: 0 auto;
+    }
+    /* Bir önceki media querrie'den değiştirmeyeceğim özellikleri birdaha burada yazmama gerek yok. */
+    
+    .card-4{
+        grid-column: 2/3;
+    }
+    
+}
+
+/* ---------Tiles-------- */
+
+.tiles-container{
+    width: 85vw;
+    max-width: 1170px;
+    margin: 16px auto;
+    display: grid;
+    row-gap: 20px;
+}
+
+@media screen and (min-width:768px){ 
+    .tiles-container{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 20px;  
+    }
+    .tiles-layout{
+        grid-column: 1/-1;
+        justify-self: center;
+    }  
+} 
+@media screen and (min-width:992px){
+    .tiles-container{
+        grid-template-columns: repeat(3,1fr);  
+    }
+}
+
+@media screen and (min-width:1170px){
+    .tiles-container{
+        grid-template-columns:repeat(4,1fr) ;
+        grid-template-rows:repeat(6,220px) ;
+        column-gap: 30px;
+        grid-template-areas:
+        "a a a a"
+        "b b b c"
+        "b b b d"
+        "e e e e"
+        "f g g g"
+        "f h i j"; 
+    }
+    .tiles-container img{
+        height: 100%;
+    }
+    /* Resimlerin setup kısmında genişliklerini 100% yapacak şekilde ayarlamıştım.
+    Yükseklikleri farklı olduğundan dağınık bir görüntü oldu ve bunu önlemek için herbiri konteynırı kapsayacak şekilde 100% olarak ayarlandı. */
+   
+
+    .tiles-layout{
+        grid-area: a;
+        align-self: center;
+    
+    }
+    .tile-1{
+        grid-area: b;
+    }
+    .tile-2{
+        grid-area: c;
+    }
+    .tile-3{
+        grid-area: d;
+    }
+    .tile-4{
+    grid-area:e ;
+    }
+    .tile-5{
+        grid-area: f;
+    }
+    .tile-6{
+        grid-area: g;
+    }
+    .tile-7{
+        grid-area: h;
+    }
+    .tile-8{
+        grid-area: i;
+    }
+    .tile-9{
+        grid-area: j;
+    } 
+
+}
+
+/* ---------Layout-------- */
+.layout-container{
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.layout-container .header{
+    background-color: var(--primaryColor);
+    color: var(--mainWhite);
+    text-align: center;  
+}
+.layout-container .header h1{
+    font-size: 30px;
+    padding:  10px;
+    margin-bottom: 0;
+}
+.layout-container .main-navbar ul{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: start;
+}
+.layout-container .main-navbar li:last-child{
+    display: none;
+}
+.layout-container .main-navbar li a{
+    color: var(--mainBlack);
+    letter-spacing: var(--mainSpacing);
+    transition: var(--mainTransition);
+    font-size: 18px;
+    
+}
+.layout-container .main-navbar li a:hover{
+    color: var(--mainWhite);
+}
+.content p{
+   padding: 20px;
+   font-size: 16px;
+} 
+.sidebar{
+    text-align: center;
+    background-color: var(--primaryColor);
+    color: var(--mainWhite);
+}  
+.sidebar span{
+    font-size: 20px;
+}
+
+.sub-info{
+    background-color: var(--mainBlack);
+    color: var(--mainWhite);
+    text-align: center;
+    
+}
+.sub-info p{
+    font-size: 20px;
+}
+@media screen and (min-width:768px){
+    .layout-container{
+        height: 100vh;
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr auto auto;
+    }
+
+    .layout-container .main-navbar ul{
+        grid-template-columns: repeat(4,1fr);
+        justify-items: center;
+    }
+}
+/* Devaaam */
+@media screen and (min-width:992px){
+    .layout-container{
+        width: 100vw;
+        grid-template-columns: [start]200px[col-1-end] 1fr [col-2-end] 50px[end];   
+        grid-template-rows: [start]50px[row-1-end] 1fr [end];
+    }
+    .layout-container .header{
+        grid-column: start /end;
+        grid-row: start / row-1-end;
+        
+    }
+   
+    .layout-container .main-navbar ul{
+        grid-column: start / col-1-end;
+        grid-row: row-1-end / end;
+    }
+    .layout-container .content{
+        grid-column: col-1-end / col-2-end ;
+        grid-row: row-1-end / end ;
+    }
+    .layout-container .sidebar{
+        grid-column: col-2-end /end ;
+        grid-row:  row-1-end / end ;
+    }
+    .layout-container .main-navbar ul{
+        grid-template-columns: 1fr;
+        align-items: center;
+        height: 100%;     
+    }
+    .layout-container .sidebar {
+        background-color: var(--darkGrey);
+        color: var(--mainBlack);
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+    }
+
+    footer .btn{
+     margin-left: 870px;
+    
+    }
+}
+   
+
+
+
+
+
